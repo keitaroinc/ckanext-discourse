@@ -8,13 +8,14 @@ import pylons
 import json
 from ckan.plugins.toolkit import asbool
 from ckan.common import g
+from ckan.lib.plugins import DefaultTranslation
 
 import logging
 
 log = logging.getLogger(__name__)
 
 
-class DiscoursePlugin(plugins.SingletonPlugin):
+class DiscoursePlugin(plugins.SingletonPlugin, DefaultTranslation):
     """
     Insert javascript fragments into package pages and the home page to
     allow users to view and create comments on any package.
@@ -22,6 +23,7 @@ class DiscoursePlugin(plugins.SingletonPlugin):
     plugins.implements(plugins.IConfigurable)
     plugins.implements(plugins.IConfigurer)
     plugins.implements(plugins.ITemplateHelpers)
+    plugins.implements(plugins.ITranslation)
 
     def configure(self, config):
         """

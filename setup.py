@@ -81,4 +81,11 @@ setup(
         [ckan.plugins]
         discourse=ckanext.discourse.plugin:DiscoursePlugin
     ''',
+    message_extractors={
+        'ckanext': [
+            ('**.py', 'python', None),
+            ('**.js', 'javascript', None),
+            ('**/templates/**.html', 'ckan', None),
+        ],
+    }
 )
